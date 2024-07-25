@@ -18,6 +18,8 @@ docker run -d --rm -v ./pkgbuilds:/pkgbuilds -v $PATH_TO_PKG:/public aur-build $
 
 任何情况下，优先从AUR构建软件包，如果从AUR克隆的项目没有包含`PKGBUILD`文件，则从ARCH官方源构建软件包。需要注意的是，有些AUR项目虽然没有AUR页面，但它们的`PKGBUILD`文件仍然存在于AUR仓库中，这些项目也会被从AUR构建，例如`lutris`。因此，如果你希望从ARCH官方源构建软件包，请确保AUR仓库中没有这个软件包。
 
+该镜像添加了ArchlinuxCN源，以及使用清华源作为默认镜像源。可以在Dockerfile中修改相关设置。
+
 ## 高级用法
 ### 自定义makepkg.conf配置
 如果需要自定义makepkg.conf配置，只需要编辑项目根目录下的`makepkg.conf`文件，然后重新构建镜像即可

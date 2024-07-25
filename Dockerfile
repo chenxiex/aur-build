@@ -1,6 +1,10 @@
 FROM archlinux
 
 RUN echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+RUN echo '[archlinuxcn]' >> /etc/pacman.conf
+RUN echo 'Server = https://mirrors.cernet.edu.cn/archlinuxcn/$arch' >> /etc/pacman.conf
+RUN pacman-key --init
+RUN pacman -Sy --noconfirm && pacman -S --noconfirm archlinuxcn-keyring
 
 RUN pacman -Syyu --noconfirm git base-devel
 
